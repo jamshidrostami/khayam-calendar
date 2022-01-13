@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+    <string-array name="longMonthNames">
+	    <item name="month_long_farvardin">فروردین</item>
+	    <item name="month_long_ordibehesht">اردیبهشت</item>
+	    <item name="month_long_khordad">خرداد</item>
+	    <item name="month_long_tir">تیر</item>
+	    <item name="month_long_mordad">مرداد</item>
+	    <item name="month_long_shahrivar">شهریور</item>
+	    <item name="month_long_mehr">مهر</item>
+	    <item name="month_long_aban">آبان</item>
+	    <item name="month_long_azar">آذر</item>
+	    <item name="month_long_dey">دی</item>
+	    <item name="month_long_bahman">بهمن</item>
+	    <item name="month_long_esfand">اسفند</item>
+    </string-array>
+
+    <string-array name="shortMonthNames">
+	    <item name="month_short_farvardin">فروردین</item>
+	    <item name="month_short_ordibehesht">اردیبهشت</item>
+	    <item name="month_short_khordad">خرداد</item>
+	    <item name="month_short_tir">تیر</item>
+	    <item name="month_short_mordad">مرداد</item>
+	    <item name="month_short_shahrivar">شهریور</item>
+	    <item name="month_short_mehr">مهر</item>
+	    <item name="month_short_aban">آبان</item>
+	    <item name="month_short_azar">آذر</item>
+	    <item name="month_short_dey">دی</item>
+	    <item name="month_short_bahman">بهمن</item>
+	    <item name="month_short_esfand">اسفند</item>
+    </string-array>
+
+    <string-array name="longWeekdayNames">
+	    <item name="day_of_week_long_sunday">یکشنبه</item>
+	    <item name="day_of_week_long_monday">۲شنبه</item>
+	    <item name="day_of_week_long_tuesday">۳شنبه</item>
+	    <item name="day_of_week_long_wednesday">۴شنبه</item>
+	    <item name="day_of_week_long_thursday">۵شنبه</item>
+	    <item name="day_of_week_long_friday">جمعه</item>
+	    <item name="day_of_week_long_saturday">شنبه</item>
+    </string-array>
+
+    <string-array name="shortWeekdayNames">
+	    <item name="day_of_week_short_sunday">ی</item>
+	    <item name="day_of_week_short_monday">د</item>
+	    <item name="day_of_week_short_tuesday">س</item>
+	    <item name="day_of_week_short_wednesday">چ</item>
+	    <item name="day_of_week_short_thursday">پ</item>
+	    <item name="day_of_week_short_friday">ج</item>
+	    <item name="day_of_week_short_saturday">ش</item>
+    </string-array>
+
+    <string name="am">ق.ظ</string>
+    <string name="pm">ب.ظ</string>
+    <string name="yesterday">دیروز</string>
+    <string name="today">امروز</string>
+    <string name="tomorrow">فردا</string>
+
+    <string name="hour_minute_24">%H:%M</string>
+    <string name="hour_minute_ampm">%-l:%M</string>
+    <string name="hour_minute_cap_ampm">%-l:%M</string>
+    <string name="twelve_hour_time_format">h:mm</string>
+    <string name="twenty_four_hour_time_format">HH:mm</string>
+    <string name="numeric_date">%Y/%-m/%-e</string>
+    <string name="numeric_date_format">M/d/yyyy</string>
+    <string name="numeric_date_template" formatted="false">"%s/%s/%s"</string>
+    <string name="month_day_year" formatted="false">%B %-e, %Y</string>
+    <string name="time_of_day">%-l:%M:%S %p</string>
+    <string name="date_and_time">%b %-e, %Y, %-l:%M:%S %p</string>
+    <string name="date_time">%1$s, %2$s</string>
+    <string name="time_date">%1$s, %3$s</string>
+    <string name="abbrev_month_day_year" formatted="false">%b %-e, %Y</string>
+    <string name="month_day" formatted="false">%B %-e</string>
+    <string name="month">%-B</string>
+    <string name="month_year" formatted="false">%B %Y</string>
+    <string name="abbrev_month_day" formatted="false">%b %-e</string>
+    <string name="abbrev_month">%-b</string>
+    <string name="abbrev_month_year" formatted="false">%b %Y</string>
+    <string name="time1_time2">%1$s – %2$s</string>
+    <string name="date1_date2">%2$s – %5$s</string>
+    <string name="numeric_md1_md2">%2$s/%3$s – %7$s/%8$s</string>
+    <string name="numeric_wday1_md1_wday2_md2">%1$s, %2$s/%3$s – %6$s, %7$s/%8$s</string>
+    <string name="numeric_mdy1_mdy2">%2$s/%3$s/%4$s – %7$s/%8$s/%9$s</string>
+    <string name="numeric_wday1_mdy1_wday2_mdy2">%1$s, %2$s/%3$s/%4$s – %6$s, %7$s/%8$s/%9$s</string>
+    <string name="numeric_wday1_mdy1_time1_wday2_mdy2_time2">%1$s, %2$s/%3$s/%4$s, %5$s – %6$s, %7$s/%8$s/%9$s, %10$s</string>
+    <string name="numeric_md1_time1_md2_time2">%2$s/%3$s, %5$s – %7$s/%8$s, %10$s</string>
+    <string name="numeric_wday1_md1_time1_wday2_md2_time2">%1$s, %2$s/%3$s, %5$s – %6$s, %7$s/%8$s, %10$s</string>
+    <string name="numeric_mdy1_time1_mdy2_time2">%2$s/%3$s/%4$s, %5$s – %7$s/%8$s/%9$s, %10$s</string>
+    <string name="wday1_date1_time1_wday2_date2_time2">%1$s, %2$s, %3$s – %4$s, %5$s, %6$s</string>
+    <string name="wday1_date1_wday2_date2">%1$s, %2$s – %4$s, %5$s</string>
+    <string name="date1_time1_date2_time2">%3$s, %2$s – %5$s, %6$s</string>
+    <string name="time_wday_date">%1$s, %3$s, %2$s</string>
+    <string name="wday_date">%3$s, %2$s</string>
+    <string name="time_wday">%1$s, %2$s</string>
+    <string name="same_year_md1_md2">%3$s %2$s – %8$s %7$s</string>
+    <string name="same_year_wday1_md1_wday2_md2">%1$s, %2$s %3$s – %6$s, %7$s %8$s</string>
+    <string name="same_year_md1_time1_md2_time2">%3$s %2$s, %5$s – %8$s %7$s, %10$s</string>
+    <string name="same_month_md1_time1_md2_time2">%3$s %2$s, %5$s – %8$s %7$s, %10$s</string>
+    <string name="same_year_wday1_md1_time1_wday2_md2_time2">%1$s, %2$s %3$s, %5$s – %6$s, %7$s %8$s, %10$s</string>
+    <string name="same_month_wday1_md1_time1_wday2_md2_time2">%1$s, %2$s %3$s, %5$s – %6$s, %7$s %8$s, %10$s</string>
+    <string name="same_year_mdy1_time1_mdy2_time2">%3$s %2$s, %4$s, %5$s – %8$s %7$s, %9$s, %10$s</string>
+    <string name="same_month_mdy1_time1_mdy2_time2">%3$s %2$s, %4$s, %5$s – %8$s %7$s, %9$s, %10$s</string>
+    <string name="same_year_wday1_mdy1_time1_wday2_mdy2_time2">%1$s, %2$s %3$s, %4$s, %5$s – %6$s, %7$s %8$s, %9$s, %10$s</string>
+    <string name="same_month_wday1_mdy1_time1_wday2_mdy2_time2">%1$s, %2$s %3$s, %4$s, %5$s – %6$s, %7$s %8$s, %9$s, %10$s</string>
+    <string name="same_month_wday1_mdy1_wday2_mdy2">%1$s, %2$s %3$s, %4$s – %6$s, %7$s %8$s, %9$s</string>
+    <string name="same_month_md1_md2">%3$s – %8$s %2$s</string>
+    <string name="same_month_wday1_md1_wday2_md2">%1$s, %2$s %3$s – %6$s, %7$s %8$s</string>
+    <string name="same_year_mdy1_mdy2">%3$s %2$s – %8$s %7$s, %9$s</string>
+    <string name="same_month_mdy1_mdy2">%3$s – %8$s %2$s, %9$s</string>
+    <string name="same_year_wday1_mdy1_wday2_mdy2">%1$s, %2$s %3$s – %6$s, %7$s %8$s, %9$s</string>
+    <string name="short_format_month">%b</string>
+    <string name="full_wday_month_day_no_year">EEEE, MMMM d</string>
+    <string name="abbrev_wday_month_day_no_year">EEE, MMMM d</string>
+    <string name="abbrev_wday_month_day_year">EEE, MMM d, yyyy</string>
+    
+</resources>

@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/* //device/apps/Calendar/AndroidManifest.xml
+**
+** Copyright 2006, The Android Open Source Project
+**
+** Licensed under the Apache License, Version 2.0 (the "License");
+** you may not use this file except in compliance with the License.
+** You may obtain a copy of the License at
+**
+**     http://www.apache.org/licenses/LICENSE-2.0
+**
+** Unless required by applicable law or agreed to in writing, software
+** distributed under the License is distributed on an "AS IS" BASIS,
+** WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+** See the License for the specific language governing permissions and
+** limitations under the License.
+*/
+-->
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+        package="com.yeksefr.khayam"
+        android:sharedUserLabel="@string/app_label"
+        android:versionCode="10"
+    	android:versionName="1.0.8">
+
+    <!--
+       NOTE: and original-package cannot be used, since the Eclair
+       version was using a shared user ID with the provider.
+    -->
+
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.MANAGE_ACCOUNTS"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.VIBRATE"/>
+    <uses-permission android:name="android.permission.READ_CONTACTS"/>
+    <uses-permission android:name="android.permission.READ_CALENDAR" />
+    <uses-permission android:name="android.permission.WRITE_CALENDAR" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.USE_CREDENTIALS" />
+    <uses-permission android:name="android.permission.READ_SYNC_SETTINGS" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="com.google.android.googleapps.permission.GOOGLE_AUTH.mail" />
+    <uses-sdk android:minSdkVersion="15" android:targetSdkVersion="18"></uses-sdk>
+
+    <application android:name="com.yeksefr.khayam.CalendarApplication"
+            android:label="@string/app_label" android:icon="@mipmap/ic_launcher_calendar"
+            android:taskAffinity="android.task.calendar"
+            android:hardwareAccelerated="true"
+            android:backupAgent="com.yeksefr.khayam.CalendarBackupAgent"
+            android:requiredAccountType="*" >
+
+        <meta-data android:name="com.google.android.backup.api_key"
+                android:value="AEdPqrEAAAAIM256oVOGnuSel5QKDpL8je_T65ZI8rFnDinssA" />
+
+        <activity
+            android:name="com.yeksefr.khayam.SplashActivity"
+            android:theme="@style/CalendarTheme.NoActionBar"
+            android:launchMode="singleTask"
+            android:exported="true"
+            android:noHistory="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name="com.yeksefr.khayam.AllInOneActivity"
+            android:theme="@style/CalendarTheme.WithActionBar"
+            android:launchMode="singleTask"
+            android:windowSoftInputMode="adjustPan"
+            android:exported="true">
+            <intent-filter>
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.APP_CALENDAR" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:mimeType="time/epoch" />
+                <data android:host="com.yeksefr.khayam" />
+                <data android:scheme="content"/>
+            </intent-filter>
+        </activity>
+
+        <activity-alias android:name="LaunchActivity"
+            android:targetActivity="com.yeksefr.khayam.AllInOneActivity"
+            android:exported="true">
+        </activity-alias>
+
+        <activity android:name="com.yeksefr.khayam.EventInfoActivity"
+            android:parentActivityName="com.yeksefr.khayam.AllInOneActivity"
+            android:theme="@style/CalendarTheme.WithActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:mimeType="vnd.android.cursor.item/event" />
+            </intent-filter>
+            <meta-data android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.yeksefr.khayam.AllInOneActivity" />
+        </activity>
+
+        <activity android:name="com.yeksefr.khayam.event.EditEventActivity"
+            android:theme="@style/CalendarTheme.WithActionBar">
+        </activity>
+
+        <activity-alias android:name="EditEventActivity"
+            android:targetActivity="com.yeksefr.khayam.event.EditEventActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.EDIT" />
+                <action android:name="android.intent.action.INSERT" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:mimeType="vnd.android.cursor.item/event" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.EDIT" />
+                <action android:name="android.intent.action.INSERT" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:mimeType="vnd.android.cursor.dir/event" />
+            </intent-filter>
+        </activity-alias>
+
+        <activity android:name="GoogleCalendarUriIntentFilter" android:label="@string/app_label"
+            android:theme="@android:style/Theme.NoDisplay"
+            android:configChanges="orientation|keyboardHidden">
+
+            <intent-filter
+               android:priority="50">
+               <action android:name="android.intent.action.VIEW" />
+               <category android:name="android.intent.category.DEFAULT" />
+               <category android:name="android.intent.category.BROWSABLE" />
+               <data android:scheme="http" android:host="www.google.com" android:pathPrefix="/calendar/event" />
+               <data android:scheme="https" android:host="www.google.com" android:pathPrefix="/calendar/event" />
+               <data android:scheme="http" android:host="www.google.com" android:pathPattern="/calendar/hosted/.*/event" />
+               <data android:scheme="https" android:host="www.google.com" android:pathPattern="/calendar/hosted/.*/event" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name="com.yeksefr.khayam.selectcalendars.SelectVisibleCalendarsActivity"
+            android:label="@string/select_visible_calendars_title"
+            android:theme="@android:style/Theme.Holo.Light"/>
+
+        <activity android:name="com.yeksefr.khayam.selectcalendars.SelectSyncedCalendarsMultiAccountActivity"
+            android:label="@string/select_synced_calendars_title"
+            android:theme="@android:style/Theme.Holo.Light"/>
+
+        <activity android:name="CalendarSettingsActivity" android:label="@string/preferences_title"
+            android:theme="@android:style/Theme.Holo.Light"/>
+
+        <!-- Declarations for search -->
+        <!-- Make all activities a searchable context -->
+        <meta-data android:name="android.app.default_searchable"
+            android:value="com.yeksefr.khayam.SearchActivity"/>
+
+        <activity android:name="SearchActivity" android:label="@string/search_title"
+            android:launchMode="singleTop" android:theme="@style/CalendarTheme.WithActionBar"
+            android:windowSoftInputMode="stateAlwaysHidden"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.SEARCH"/>
+            </intent-filter>
+            <meta-data android:name="android.app.searchable" android:resource="@xml/searchable"/>
+        </activity>
+
+        <provider android:name="com.yeksefr.khayam.CalendarRecentSuggestionsProvider"
+            android:exported="false"
+            android:authorities="com.yeksefr.khayam.CalendarRecentSuggestionsProvider" />
+
+        <!-- Declarations for alerts/reminders -->
+        <activity android:name="com.yeksefr.khayam.alerts.AlertActivity" android:launchMode="singleInstance"
+             android:theme="@android:style/Theme.Holo.Dialog" android:excludeFromRecents="true" />
+
+        <activity android:name="com.yeksefr.khayam.alerts.QuickResponseActivity" android:launchMode="singleInstance"
+             android:theme="@android:style/Theme.Holo.Dialog" android:excludeFromRecents="true"
+             android:label="@string/quick_response_dialog_title" />
+
+        <receiver android:name="com.yeksefr.khayam.alerts.AlertReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.EVENT_REMINDER" />
+                <action android:name="android.intent.action.TIME_SET" />
+                <data android:scheme="content" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.LOCALE_CHANGED" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.PROVIDER_CHANGED"/>
+                <data android:scheme="content"/>
+                <data android:host="com.android.calendar"/>
+            </intent-filter>
+        </receiver>
+
+        <receiver android:name="com.yeksefr.khayam.alerts.GlobalDismissManager"
+                  android:exported="false" />
+
+        <service android:name="com.yeksefr.khayam.alerts.AlertService" />
+
+        <service android:name="com.yeksefr.khayam.alerts.DismissAlarmsService" />
+
+        <service android:name="com.yeksefr.khayam.alerts.SnoozeAlarmsService" />
+
+        <service android:name="com.yeksefr.khayam.alerts.InitAlarmsService" />
+
+        <!-- Declarations for the widget -->
+        <receiver android:name="com.yeksefr.khayam.widget.CalendarAppWidgetProvider" android:label="@string/gadget_title">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+                <action android:name="com.yeksefr.khayam.APPWIDGET_UPDATE" />
+            </intent-filter>
+            <meta-data android:name="android.appwidget.provider" android:resource="@xml/appwidget_info" />
+        </receiver>
+
+        <receiver android:name="com.yeksefr.khayam.widget.CalendarAppWidgetService$CalendarFactory">
+            <intent-filter>
+                <action android:name="android.intent.action.TIMEZONE_CHANGED"/>
+                <action android:name="android.intent.action.DATE_CHANGED"/>
+                <action android:name="android.intent.action.TIME_SET"/>
+                <action android:name="android.intent.action.LOCALE_CHANGED"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.PROVIDER_CHANGED"/>
+                <data android:scheme="content"/>
+                <data android:host="com.android.calendar"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="com.yeksefr.khayam.APPWIDGET_SCHEDULED_UPDATE"/>
+                <data android:scheme="content"/>
+                <data android:host="com.android.calendar"/>
+                <data android:mimeType="vnd.android.data/update" />
+            </intent-filter>
+        </receiver>
+        <service android:name="com.yeksefr.khayam.widget.CalendarAppWidgetService"
+            android:permission="android.permission.BIND_REMOTEVIEWS"
+            android:exported="false">
+        </service>
+
+        <service android:name="com.yeksefr.khayam.AsyncQueryServiceHelper" />
+
+   	    <activity android:name="com.android.datetimepicker.SelectDateActivity"
+   	        android:theme="@android:style/Theme.Translucent.NoTitleBar"
+   	        >
+		    <intent-filter>
+		        <action android:name="com.yeksefr.action.PICK_DATE"/>
+		        <category android:name="android.intent.category.DEFAULT"/>
+		    </intent-filter>
+		</activity>
+        
+  	    <activity android:name="com.android.datetimepicker.SelectTimeActivity"
+   	        android:theme="@android:style/Theme.Translucent.NoTitleBar"
+   	        >
+		    <intent-filter>
+		        <action android:name="com.yeksefr.action.PICK_TIME"/>
+		        <category android:name="android.intent.category.DEFAULT"/>
+		    </intent-filter>
+		</activity>
+		
+        <receiver android:name="com.yeksefr.khayam.widget.KhayamAppWidgetProvider" android:label="@string/gadget_title_farsi">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+                <action android:name="com.yeksefr.intent.action.ACTION_REFRESH" />
+                <action android:name="android.intent.action.TIME_SET" />
+                <action android:name="android.intent.action.TIMEZONE_CHANGED" />
+                <action android:name="android.intent.action.DATE_CHANGED" />
+            </intent-filter>
+            <meta-data android:name="android.appwidget.provider" android:resource="@xml/appwidget_info_farsi" />
+        </receiver>
+
+        <service android:name=".widget.ClockService" />
+    </application>
+</manifest>

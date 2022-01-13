@@ -1,0 +1,41 @@
+apply plugin: 'com.android.application'
+
+Properties props = new Properties()
+props.load(new FileInputStream(file("/media/f/projects/1-0/_DOC/android_sign/myproject.properties")))
+
+android {
+    compileSdkVersion 22
+    buildToolsVersion "22.0.0"
+
+    defaultConfig {
+        applicationId "com.yeksefr.khayam"
+        minSdkVersion 15
+        targetSdkVersion 18
+    }
+
+    signingConfigs {
+        release {
+            storeFile file(props['keystore'])
+            storePassword props['keystore.password']
+            keyAlias props['keystore.keyAlias']
+            keyPassword props['keystore.keyPassword']
+        }
+    }
+    buildTypes {
+        release {
+            signingConfig signingConfigs.release
+            minifyEnabled true
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-project.txt'
+        }
+    }
+}
+
+dependencies {
+    compile project(':colorpicker')
+    compile project(':timezonepicker')
+    compile project(':common')
+    compile project(':chips')
+    compile project(':calendarCommon')
+    compile project(':datetimepicker')
+}
